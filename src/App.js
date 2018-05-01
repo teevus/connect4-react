@@ -22,6 +22,23 @@ class Slot extends React.Component {
   }
 }
 
+class ColButton extends React.Component {
+	onClicked = () => {
+  	if (this.props.col === null)
+      return;
+      
+    this.props.colClicked(this.props.col)
+  }
+
+	render() {
+    return (
+    <div className="colButton" onClick={this.onClicked} >
+    <i className="fa fa-arrow-down"></i>
+    </div>
+    );
+  }
+}
+
 class Board extends React.Component {
   
 	render() {
@@ -39,15 +56,13 @@ class Board extends React.Component {
         	<div className="board">
           	<div className="row board-row">
               {cols.map(j =>
-                <div key={j} className="boardButton">
-                <i className="fa fa-arrow-down"></i>
-                </div>
+              <ColButton key={j} col={j} colClicked={this.props.colClicked} />
               )}
             </div>
             {rows.map(i =>
-              <div className="row board-row">
+              <div key={j} className="row board-row">
                 {cols.map(j =>
-                <Slot key={j} slotValue={this.props.slotValues[i][j]} col={j} colClicked={this.props.colClicked} />
+                <Slot slotValue={this.props.slotValues[i][j]} col={j} colClicked={this.props.colClicked} />
                 )}
               </div>
             )}

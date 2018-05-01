@@ -2,8 +2,9 @@
 	display:inline-block;
 	background-color: blue; 
   padding: 10px;
-  padding-left: 18px;
+  /* padding-left: 18px; */
   width: 245px;
+  border-radius:5px;
 }
 .boardButtons {
 	display:inline-block;
@@ -19,13 +20,14 @@
   width: 30px;
   height: 30px;
 }
-.boardButton {
+.colButton {
 	color: lightgrey;
 	display: inline-block;
   margin: 2px;
   width: 30px;
   height: 30px;
   text-align: center;
+  cursor: pointer;
 }
 .position1-1 {
 	margin: 10px;
