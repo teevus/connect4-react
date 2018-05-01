@@ -11,8 +11,10 @@ You need node.js installed.
 
 Clone the repository into a local folder, then run the following from within the folder:
 
-``
+```
+npm install
+
 npm start
-``
+```
 
 
