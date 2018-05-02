@@ -44,8 +44,9 @@
   cursor: not-allowed;
 }
 
-/* TODO: Convert to using LESS */
 
+/* RED animations */
+/* TODO: Convert to using LESS */
 .slottransition-1-0 {
   animation: slottransition-1-0 0.3s 1;
 }
@@ -161,7 +162,7 @@ TODO: Implement this in less?  Then I can use code to generate these
   100%        {background:red;}
 }
 
-// YELLOW
+/* YELLOW */
 
 .slottransition-2-0 {
   animation: slottransition-2-0 0.3s 1;

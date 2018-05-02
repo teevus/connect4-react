@@ -80,8 +80,8 @@ const GameStatus = (props) => {
   if (props.winner > 0) {
     return (
     		<div>
-        	<p>Player {props.currentPlayer} ({colors[props.currentPlayer]}) has won the game!</p>
-        	<button onClick={props.onRestartClicked}>Restart Game</button>
+        	<p>{colors[props.currentPlayer]} Player has won the game!</p>
+        	<button onClick={props.onRestartClicked}>Play Again</button>
         </div>
     );
   }
@@ -95,7 +95,7 @@ const GameStatus = (props) => {
   }
   else {
   	return ( 
-    	<p>Player {props.currentPlayer} ({colors[props.currentPlayer]}) turn</p>
+    	<p>{colors[props.currentPlayer]} Player turn</p>
     );
   }
 }
@@ -103,10 +103,41 @@ const GameStatus = (props) => {
 class Game extends React.Component {
 	static defaultRows = 6;
   static defaultCols = 7;
+
+  static createEmptyBoard(rows, cols, emptyValue) {
+  
+    var matrix = [];
+    for(var i=0; i<rows; i++) {
+        matrix[i] = [];
+        for(var j=0; j<cols; j++) {
+            matrix[i][j] = emptyValue;
+        }
+    }    
+    return matrix;
+  }
+
+  static initialState = () => ({
+  	rowCount: Game.defaultRows,
+    colCount: Game.defaultCols,
+    slotValues: Game.createEmptyBoard(Game.defaultRows,Game.defaultCols, 0),
+    slotTransitions: Game.createEmptyBoard(Game.defaultRows,Game.defaultCols, null),
+    startPlayer: 1,
+    currentPlayer: 1,
+    winner: 0
+  });
   
   restartGame = () => {
-  	// console.log('restart clicked')
-  	this.setState(Game.initialState);
+    var restartState = Game.initialState();
+    // Switch start player to make it fair
+    if (this.state.startPlayer === 1) {
+      restartState.startPlayer = 2;
+    }
+    else {
+      restartState.startPlayer = 1;
+    }
+    restartState.currentPlayer = restartState.startPlayer;
+
+  	this.setState(restartState);
   }
   
   checkBoardInDirection = (row, col, rowDelta, colDelta) => {
@@ -188,18 +219,6 @@ class Game extends React.Component {
     return true;
   }
   
-  static createEmptyBoard(rows, cols, emptyValue) {
-  
-    var matrix = [];
-    for(var i=0; i<rows; i++) {
-        matrix[i] = [];
-        for(var j=0; j<cols; j++) {
-            matrix[i][j] = emptyValue;
-        }
-    }    
-    return matrix;
-  }
-  
   colClicked = (col) => {
   	if (this.state.currentPlayer <= 0)
     	return; // Game over: nobody won
@@ -258,17 +277,10 @@ class Game extends React.Component {
     }
   };
 
-  static initialState = () => ({
-  	rowCount: Game.defaultRows,
-    colCount: Game.defaultCols,
-    slotValues: Game.createEmptyBoard(Game.defaultRows,Game.defaultCols, 0),
-    slotTransitions: Game.createEmptyBoard(Game.defaultRows,Game.defaultCols, null),
-    player1: '', // ETH address
-    player2: '',
-    currentPlayer: 1,
-    winner: 0
-  });
-  state = Game.initialState();
+  constructor(props) {
+    super(props);
+    this.state = Game.initialState();
+  }
 
 	render() {
   	return (
@@ -277,7 +289,7 @@ class Game extends React.Component {
         <hr/>
         <br/>
         <Board slotValues={this.state.slotValues} slotTransitions={this.state.slotTransitions} colClicked={this.colClicked} />
-        <GameStatus currentPlayer={this.state.currentPlayer} onRestartClicked={this.restartGame} winner={this.state.winner} />
+        <GameStatus currentPlayer={this.state.currentPlayer} onRestartClicked={() => this.restartGame()} winner={this.state.winner} />
       </div>
     );
   }
