@@ -1,2 +1,0 @@
-body{margin:0;padding:0;font-family:sans-serif}.board{background-color:blue}.board,.boardButtons{display:inline-block;padding:10px;padding-left:18px;width:245px}.slot{background-color:#fff;border-radius:50%}.boardButton,.slot{display:inline-block;margin:2px;width:30px;height:30px}.boardButton{color:#d3d3d3;text-align:center}.position1-1{margin:10px}.slot-0{cursor:pointer}.slot-1{background-color:red}.slot-1,.slot-2{cursor:not-allowed}.slot-2{background-color:#ff0}
-/*# sourceMappingURL=main.3f537c02.css.map*/
