@@ -15,7 +15,10 @@ class Slot extends React.Component {
   }
 
 	render() {
-  	var slotClass = 'slot slot-' + this.props.slotValue;
+    var slotClass = 'slot slot-' + this.props.slotValue;
+    if (this.props.slotTransition !== null) {
+      slotClass = slotClass + ' slottransition-' + this.props.slotTransition;
+    }
     return (
         <div className={slotClass} onClick={this.onClicked}></div>
     );
@@ -54,15 +57,15 @@ class Board extends React.Component {
     <div className="game">
         <div className="frame">
         	<div className="board">
-          	<div className="row board-row">
+          	<div key={-1} className="row board-row">
               {cols.map(j =>
               <ColButton key={j} col={j} colClicked={this.props.colClicked} />
               )}
             </div>
             {rows.map(i =>
-              <div key={j} className="row board-row">
+              <div key={i} className="row board-row">
                 {cols.map(j =>
-                <Slot slotValue={this.props.slotValues[i][j]} col={j} colClicked={this.props.colClicked} />
+                <Slot key={j} slotValue={this.props.slotValues[i][j]} col={j} slotTransition={this.props.slotTransitions[i][j]} colClicked={this.props.colClicked} />
                 )}
               </div>
             )}
@@ -172,7 +175,8 @@ class Game extends React.Component {
   }
   
   gameOver = () => {
-  	// Check if the board is full
+    // Check if the board is full
+    // TODO: Check if its impossible to win and end the game
     for (var row = 0; row < this.state.rowCount; row++) {
     	for (var col = 0; row < this.state.colCount; col++) {
       	if (this.state.slotValues[row][col] === 0) {
@@ -184,13 +188,13 @@ class Game extends React.Component {
     return true;
   }
   
-  static createEmptyBoard(rows, cols) {
+  static createEmptyBoard(rows, cols, emptyValue) {
   
     var matrix = [];
     for(var i=0; i<rows; i++) {
         matrix[i] = [];
         for(var j=0; j<cols; j++) {
-            matrix[i][j] = 0;
+            matrix[i][j] = emptyValue;
         }
     }    
     return matrix;
@@ -213,6 +217,17 @@ class Game extends React.Component {
     if (rowNumber >= 0) {
       var newSlotValues = this.state.slotValues;
       newSlotValues[rowNumber][col] = this.state.currentPlayer;
+
+      // Set the slot transition values for animating the piece dropping down the board
+      var newSlotTransitions = Game.createEmptyBoard(Game.defaultRows,Game.defaultCols, null);
+      for (var i = 0; i <= rowNumber; i++) {
+        var newSlotTransition = this.state.currentPlayer + '-' + i;
+        if (i === rowNumber) {
+          newSlotTransition = newSlotTransition + '-final';
+        }
+        newSlotTransitions[i][col] = newSlotTransition;
+      }
+
       var winner = this.findWinner(row, col);
       var newPlayer = this.state.currentPlayer;
       if (winner > 0) {
@@ -235,6 +250,7 @@ class Game extends React.Component {
       
       this.setState({
         slotValues: newSlotValues,
+        slotTransitions: newSlotTransitions,
         currentPlayer: newPlayer,
         winner: winner,
       });
@@ -245,7 +261,8 @@ class Game extends React.Component {
   static initialState = () => ({
   	rowCount: Game.defaultRows,
     colCount: Game.defaultCols,
-		slotValues: Game.createEmptyBoard(Game.defaultRows,Game.defaultCols),
+    slotValues: Game.createEmptyBoard(Game.defaultRows,Game.defaultCols, 0),
+    slotTransitions: Game.createEmptyBoard(Game.defaultRows,Game.defaultCols, null),
     player1: '', // ETH address
     player2: '',
     currentPlayer: 1,
@@ -259,7 +276,7 @@ class Game extends React.Component {
       	<h3>Connect 4</h3>
         <hr/>
         <br/>
-        <Board slotValues={this.state.slotValues} colClicked={this.colClicked} />
+        <Board slotValues={this.state.slotValues} slotTransitions={this.state.slotTransitions} colClicked={this.colClicked} />
         <GameStatus currentPlayer={this.state.currentPlayer} onRestartClicked={this.restartGame} winner={this.state.winner} />
       </div>
     );

@@ -43,3 +43,237 @@
 	background-color: yellow;
   cursor: not-allowed;
 }
+
+/* TODO: Convert to using LESS */
+
+.slottransition-1-0 {
+  animation: slottransition-1-0 0.3s 1;
+}
+.slottransition-1-1 {
+  animation: slottransition-1-1 0.3s 1;
+}
+.slottransition-1-2 {
+  animation: slottransition-1-2 0.3s 1;
+}
+.slottransition-1-3 {
+  animation: slottransition-1-3 0.3s 1;
+}
+.slottransition-1-4 {
+  animation: slottransition-1-4 0.3s 1;
+}
+.slottransition-1-5 {
+  animation: slottransition-1-5 0.3s 1;
+}
+.slottransition-1-0-final {
+  animation: slottransition-1-0-final 0.3s 1;
+}
+.slottransition-1-1-final {
+  animation: slottransition-1-1-final 0.3s 1;
+}
+.slottransition-1-2-final {
+  animation: slottransition-1-2-final 0.3s 1;
+}
+.slottransition-1-3-final {
+  animation: slottransition-1-3-final 0.3s 1;
+}
+.slottransition-1-4-final {
+  animation: slottransition-1-4-final 0.3s 1;
+}
+.slottransition-1-5-final {
+  animation: slottransition-1-5-final 0.3s 1;
+}
+
+/* Note: these keyframes are hardcoded for 6 rows.  
+If a different number of rows is required, this will need a different approach 
+TODO: Implement this in less?  Then I can use code to generate these
+*/
+@keyframes slottransition-1-0
+{
+  0%      {background:red;}
+  15%     {background:red;}
+  20%     {background:white;}
+}
+@keyframes slottransition-1-0-final
+{
+  0%      {background:red;}
+}
+@keyframes slottransition-1-1
+{
+  0%      {background:white;}
+  20%     {background:red;}
+  30%     {background:white;}
+  40%     {background:white;}
+}
+@keyframes slottransition-1-1-final
+{
+  0%      {background:white;}
+  20%     {background:red;}
+}
+@keyframes slottransition-1-2
+{
+  0%      {background:white;}
+  20%     {background:white;}
+  40%     {background:red;}
+  60%     {background:white;}
+}
+@keyframes slottransition-1-2-final
+{
+  0%      {background:white;}
+  20%     {background:white;}
+  40%     {background:red;}
+}
+@keyframes slottransition-1-3
+{
+  0%          {background:white;}
+  40%         {background:white;}
+  60%         {background:red;}
+  80%         {background:white;}
+}
+@keyframes slottransition-1-3-final
+{
+  0%          {background:white;}
+  40%         {background:white;}
+  60%         {background:red;}
+}
+@keyframes slottransition-1-4
+{
+  0%          {background:white;}
+  60%         {background:white;}
+  80%         {background:red;}
+  100%        {background:white;}
+}
+@keyframes slottransition-1-4-final
+{
+  0%          {background:white;}
+  60%         {background:white;}
+  80%         {background:red;}
+}
+@keyframes slottransition-1-5
+{
+  0%          {background:white;}
+  80%         {background:white;}
+  100%        {background:red;}
+}
+@keyframes slottransition-1-5-final
+{
+  0%          {background:white;}
+  80%         {background:white;}
+  100%        {background:red;}
+}
+
+// YELLOW
+
+.slottransition-2-0 {
+  animation: slottransition-2-0 0.3s 1;
+}
+.slottransition-2-1 {
+  animation: slottransition-2-1 0.3s 1;
+}
+.slottransition-2-2 {
+  animation: slottransition-2-2 0.3s 1;
+}
+.slottransition-2-3 {
+  animation: slottransition-2-3 0.3s 1;
+}
+.slottransition-2-4 {
+  animation: slottransition-2-4 0.3s 1;
+}
+.slottransition-2-5 {
+  animation: slottransition-2-5 0.3s 1;
+}
+.slottransition-2-0-final {
+  animation: slottransition-2-0-final 0.3s 1;
+}
+.slottransition-2-1-final {
+  animation: slottransition-2-1-final 0.3s 1;
+}
+.slottransition-2-2-final {
+  animation: slottransition-2-2-final 0.3s 1;
+}
+.slottransition-2-3-final {
+  animation: slottransition-2-3-final 0.3s 1;
+}
+.slottransition-2-4-final {
+  animation: slottransition-2-4-final 0.3s 1;
+}
+.slottransition-2-5-final {
+  animation: slottransition-2-5-final 0.3s 1;
+}
+
+/* Note: these keyframes are hardcoded for 6 rows.  
+If a different number of rows is requiyellow, this will need a different approach 
+TODO: Implement this in less?  Then I can use code to generate these
+*/
+@keyframes slottransition-2-0
+{
+  0%      {background:yellow;}
+  15%     {background:yellow;}
+  20%     {background:white;}
+}
+@keyframes slottransition-2-0-final
+{
+  0%      {background:yellow;}
+}
+@keyframes slottransition-2-1
+{
+  0%      {background:white;}
+  20%     {background:yellow;}
+  30%     {background:white;}
+  40%     {background:white;}
+}
+@keyframes slottransition-2-1-final
+{
+  0%      {background:white;}
+  20%     {background:yellow;}
+}
+@keyframes slottransition-2-2
+{
+  0%      {background:white;}
+  20%     {background:white;}
+  40%     {background:yellow;}
+  60%     {background:white;}
+}
+@keyframes slottransition-2-2-final
+{
+  0%      {background:white;}
+  20%     {background:white;}
+  40%     {background:yellow;}
+}
+@keyframes slottransition-2-3
+{
+  0%          {background:white;}
+  40%         {background:white;}
+  60%         {background:yellow;}
+  80%         {background:white;}
+}
+@keyframes slottransition-2-3-final
+{
+  0%          {background:white;}
+  40%         {background:white;}
+  60%         {background:yellow;}
+}
+@keyframes slottransition-2-4
+{
+  0%          {background:white;}
+  60%         {background:white;}
+  80%         {background:yellow;}
+  100%        {background:white;}
+}
+@keyframes slottransition-2-4-final
+{
+  0%          {background:white;}
+  60%         {background:white;}
+  80%         {background:yellow;}
+}
+@keyframes slottransition-2-5
+{
+  0%          {background:white;}
+  80%         {background:white;}
+  100%        {background:yellow;}
+}
+@keyframes slottransition-2-5-final
+{
+  0%          {background:white;}
+  80%         {background:white;}
+  100%        {background:yellow;}
+}
