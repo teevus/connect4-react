@@ -1,9 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './App.css';
 
 const colors = ['','Red','Yellow'];
 
 class Slot extends React.Component {
+  static propTypes = {
+    slotValue: PropTypes.number.isRequired,
+    col: PropTypes.number.isRequired,
+    colClicked: PropTypes.func.isRequired,
+  };
+
 	onClicked = () => {
   	if (this.props.col === null)
     	return;
@@ -26,6 +33,11 @@ class Slot extends React.Component {
 }
 
 class ColButton extends React.Component {
+  static propTypes = {
+    col: PropTypes.number.isRequired,
+    colClicked: PropTypes.func.isRequired,
+  };
+
 	onClicked = () => {
   	if (this.props.col === null)
       return;
@@ -43,7 +55,12 @@ class ColButton extends React.Component {
 }
 
 class Board extends React.Component {
-  
+  static propTypes = {
+    colClicked: PropTypes.func.isRequired,
+    slotValues: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)),
+    slotTransitions: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
+  };
+
 	render() {
     var cols = new Array(7);
     for (var i=0;i<cols.length;i++) {
@@ -77,6 +94,7 @@ class Board extends React.Component {
 }
 
 const GameStatus = (props) => {
+  
   if (props.winner > 0) {
     return (
     		<div>
@@ -99,6 +117,11 @@ const GameStatus = (props) => {
     );
   }
 }
+GameStatus.propTypes = {
+  currentPlayer: PropTypes.number.isRequired,
+  onRestartClicked: PropTypes.func.isRequired,
+  winner: PropTypes.number,
+};
 
 class Game extends React.Component {
 	static defaultRows = 6;
@@ -285,9 +308,6 @@ class Game extends React.Component {
 	render() {
   	return (
     	<div>
-      	<h3>Connect 4</h3>
-        <hr/>
-        <br/>
         <Board slotValues={this.state.slotValues} slotTransitions={this.state.slotTransitions} colClicked={this.colClicked} />
         <GameStatus currentPlayer={this.state.currentPlayer} onRestartClicked={() => this.restartGame()} winner={this.state.winner} />
       </div>
@@ -296,12 +316,12 @@ class Game extends React.Component {
 }
 
 class App extends React.Component {
-	
 
 	render() {
   	return (
     	<div>
       	<Game />
+        <br/>
       </div>
     );
   }

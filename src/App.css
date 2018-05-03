@@ -40,7 +40,7 @@
   cursor: not-allowed;
 }
 .slot-2 {
-	background-color: yellow;
+	background-color: #EBF736; 
   cursor: not-allowed;
 }
 
@@ -207,74 +207,74 @@ TODO: Implement this in less?  Then I can use code to generate these
 */
 @keyframes slottransition-2-0
 {
-  0%      {background:yellow;}
-  15%     {background:yellow;}
+  0%      {background:#EBF736;}
+  15%     {background:#EBF736;}
   20%     {background:white;}
 }
 @keyframes slottransition-2-0-final
 {
-  0%      {background:yellow;}
+  0%      {background:#EBF736;}
 }
 @keyframes slottransition-2-1
 {
   0%      {background:white;}
-  20%     {background:yellow;}
+  20%     {background:#EBF736;}
   30%     {background:white;}
   40%     {background:white;}
 }
 @keyframes slottransition-2-1-final
 {
   0%      {background:white;}
-  20%     {background:yellow;}
+  20%     {background:#EBF736;}
 }
 @keyframes slottransition-2-2
 {
   0%      {background:white;}
   20%     {background:white;}
-  40%     {background:yellow;}
+  40%     {background:#EBF736;}
   60%     {background:white;}
 }
 @keyframes slottransition-2-2-final
 {
   0%      {background:white;}
   20%     {background:white;}
-  40%     {background:yellow;}
+  40%     {background:#EBF736;}
 }
 @keyframes slottransition-2-3
 {
   0%          {background:white;}
   40%         {background:white;}
-  60%         {background:yellow;}
+  60%         {background:#EBF736;}
   80%         {background:white;}
 }
 @keyframes slottransition-2-3-final
 {
   0%          {background:white;}
   40%         {background:white;}
-  60%         {background:yellow;}
+  60%         {background:#EBF736;}
 }
 @keyframes slottransition-2-4
 {
   0%          {background:white;}
   60%         {background:white;}
-  80%         {background:yellow;}
+  80%         {background:#EBF736;}
   100%        {background:white;}
 }
 @keyframes slottransition-2-4-final
 {
   0%          {background:white;}
   60%         {background:white;}
-  80%         {background:yellow;}
+  80%         {background:#EBF736;}
 }
 @keyframes slottransition-2-5
 {
   0%          {background:white;}
   80%         {background:white;}
-  100%        {background:yellow;}
+  100%        {background:#EBF736;}
 }
 @keyframes slottransition-2-5-final
 {
   0%          {background:white;}
   80%         {background:white;}
-  100%        {background:yellow;}
+  100%        {background:#EBF736;}
 }
